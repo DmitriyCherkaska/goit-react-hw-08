@@ -1,0 +1,37 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 550px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+.listHeight {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow-y: auto;
+  margin-top: 10px;
+  height: 550px;
+}
+.item {
+  width: 380px;
+}
+@media screen and (min-width: 768px) {
+  .list {
+    height: 650px;
+  }
+  .listHeight {
+    min-height: 330px;
+  }
+}

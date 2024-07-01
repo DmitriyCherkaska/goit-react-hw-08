@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import SearchBox from '../../components/SearchBox/SearchBox';
 import { selectContacts, selectLoading } from '../../redux/contacts/slice';
 import { useEffect } from 'react';

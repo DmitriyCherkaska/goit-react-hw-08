@@ -1,13 +1,11 @@
-import style from './ContactForm.module.css';
+import style from './EditContact.module.css';
 import * as Yup from 'yup';
 import MaskedInput from 'react-text-mask';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { BsBoxArrowUpLeft } from 'react-icons/bs';
-import { addContact } from '../../redux/contacts/operations';
-import { selectContacts } from '../../redux/contacts/slice';
-import { useEffect, useId, useState } from 'react';
-import { changeFilter, selectFilter } from '../../redux/filters/slice';
+import { useEffect, useId } from 'react';
+import { editContact } from '../../redux/contacts/operations';
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -47,66 +45,26 @@ const TextMaskCustom = ({ field, ...props }) => (
     className={style.field}
   />
 );
-const ContactForm = ({ setIsFormVisible, textValue }) => {
+const EditContact = ({ isEdit, setIsEdit, contact }) => {
   const nameFieldId = useId();
   const numberFieldId = useId();
-  const value = useSelector(selectFilter);
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-
-  const plainNumberPattern = /^\d{2,10}$/;
-  const formattedNumberPattern = /^\(\d{3}\) \d{3}-\d{4}$/;
-
-  const determineInitialValues = text => {
-    if (plainNumberPattern.test(text)) {
-      const plainNumber = text.replace(/\D/g, ''); // Удаление всех нецифровых символов
-      const formattedText = `(${plainNumber.slice(0, 3)}) ${plainNumber.slice(
-        3,
-        6,
-      )}-${plainNumber.slice(6)}`;
-      return { name: '', number: formattedText };
-    } else if (formattedNumberPattern.test(text)) {
-      return { name: '', number: text };
-    } else {
-      return { name: text, number: '' };
-    }
-  };
-
-  const [initialValues, setInitialValues] = useState(
-    textValue ? determineInitialValues(textValue) : { name: '', number: '' },
-  );
-
-  useEffect(() => {
-    setInitialValues(
-      textValue ? determineInitialValues(textValue) : { name: '', number: '' },
-    );
-  }, [textValue]);
 
   const handleSubmit = (values, actions) => {
-    const duplicateContact = contacts.find(
-      contact =>
-        contact.name.toLowerCase() === values.name.toLowerCase() ||
-        contact.number === values.number,
-    );
+    const updateContact = {
+      name: values.name,
+      number: values.number,
+    };
 
-    if (duplicateContact) {
-      actions.setErrors({ name: 'This contact already exists' });
-    } else {
-      const newContact = {
-        name: values.name,
-        number: values.number,
-      };
-      dispatch(addContact(newContact));
-      setIsFormVisible(true);
-      actions.resetForm();
-    }
-    if (value !== '') {
-      dispatch(changeFilter(''));
-    }
+    dispatch(editContact({ contactId: contact.id, updateContact }))
+      .unwrap()
+      .then(() => {
+        setIsEdit(false);
+        actions.resetForm();
+      });
   };
   const handleCloseForm = actions => {
-    setInitialValues({ name: '', number: '' });
-    setIsFormVisible(true);
+    setIsEdit(false);
     actions.resetForm();
   };
   const handleClick = event => {
@@ -117,16 +75,23 @@ const ContactForm = ({ setIsFormVisible, textValue }) => {
       }, 0);
     }
   };
+  useEffect(() => {
+    if (isEdit) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isEdit]);
   return (
-    <>
+    <section className={`${style.sectionForm} ${isEdit ? style.visible : ''}`}>
       <Formik
-        initialValues={initialValues}
-        enableReinitialize
+        initialValues={{ name: contact.name, number: contact.number }}
         onSubmit={handleSubmit}
         validationSchema={ContactSchema}
       >
         {resetForm => (
           <Form className={style.form}>
+            <p className={style.title}>Edit contact</p>
             <label className={style.label} htmlFor={nameFieldId}>
               Name
             </label>
@@ -135,7 +100,6 @@ const ContactForm = ({ setIsFormVisible, textValue }) => {
               type="text"
               name="name"
               id={nameFieldId}
-              autoComplete="name"
             />
             <ErrorMessage
               className={style.error}
@@ -160,9 +124,8 @@ const ContactForm = ({ setIsFormVisible, textValue }) => {
               component="span"
             />
             <button className={style.btn} type="submit">
-              Add contact
+              Save
             </button>
-
             <button
               className={style.btnUp}
               type="button"
@@ -173,7 +136,7 @@ const ContactForm = ({ setIsFormVisible, textValue }) => {
           </Form>
         )}
       </Formik>
-    </>
+    </section>
   );
 };
-export default ContactForm;
+export default EditContact;

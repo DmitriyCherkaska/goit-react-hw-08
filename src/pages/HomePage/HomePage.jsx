@@ -1,4 +1,4 @@
-import style from './HomePage.module.css';
+// import style from './HomePage.module.css';
 import Logo from '../../components/Logo/Logo';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,24 +8,20 @@ const HomePage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <>
-      <div className={style.container}>
+      <div>
         <Logo />
-        <h1 className={style.title}>
+        <h1>
           Welcome to Your Personal PhoneBook! <br />
           <br />
           Easily store and manage your contacts. <br />
           <br />
           Start adding now!
         </h1>
-        <div className={style.boxLink}>
+        <div>
           {isLoggedIn ? (
-            <Link className={style.link} to="/contacts">
-              Contacts
-            </Link>
+            <Link to="/contacts">Contacts</Link>
           ) : (
-            <Link className={style.link} to="/register">
-              Register
-            </Link>
+            <Link to="/register">Register</Link>
           )}
         </div>
       </div>

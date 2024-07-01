@@ -1,14 +1,20 @@
 .title {
-  font-size: 30px;
+  font-size: 25px;
   margin-bottom: 25px;
-  color: aquamarine;
+  color: rgb(87, 182, 233);
 }
 
 .register {
   font-size: 30px;
-  border: 1px solid rgb(52, 162, 240);
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 15px;
-  padding: 10px;
-  background-color: rgb(167, 233, 174);
-  margin-bottom: 30px;
+  padding: 10px 40px;
+  background-color: rgb(168, 232, 156);
+  cursor: pointer;
+  transition: all 350ms ease-in-out;
+}
+
+.register:hover {
+  background-color: rgb(231, 197, 143);
+  color: blue;
 }

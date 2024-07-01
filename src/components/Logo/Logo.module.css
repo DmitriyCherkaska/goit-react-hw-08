@@ -1,17 +1,18 @@
-.icon {
-  fill: rgb(168, 231, 165);
-}
-
-.title {
-  margin-top: 10px;
-  color: rgb(168, 232, 156);
-}
+/* .header {
+  box-shadow: 2px 4px 35px rgb(168, 222, 177);
+  margin-bottom: 70px;
+} */
 
 .divWrapper {
   width: 100%;
   overflow: hidden;
 }
-.header {
-  box-shadow: 2px 4px 35px rgb(168, 222, 177);
-  margin-bottom: 70px;
+
+.title {
+  margin: 50px 0px;
+  color: rgb(168, 232, 156);
+}
+
+.icon {
+  fill: rgb(168, 231, 165);
 }

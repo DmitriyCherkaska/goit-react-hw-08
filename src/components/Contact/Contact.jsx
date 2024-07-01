@@ -1,4 +1,4 @@
-import style from './Contact.module.css';
+// import style from './Contact.module.css';
 import { ImPhone } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Fill, RiEdit2Fill } from 'react-icons/ri';
@@ -42,31 +42,27 @@ const Contact = ({ contact }) => {
   };
   return (
     <>
-      <div className={style.card}>
-        <div className={style.user}>
-          <h2 className={style.nameUser}>
-            <span className={style.spanIconUser}>
-              <FaRegUser className={style.iconUser} size={20} />
+      <div>
+        <div>
+          <h2>
+            <span>
+              <FaRegUser size={20} />
             </span>
-            <span className={style.text}>{contact.name}</span>
+            <span>{contact.name}</span>
           </h2>
-          <a
-            href={`tel: +${contact.number}`}
-            className={style.linkPhone}
-            onClick={handleClearSearch}
-          >
-            <span className={style.spanIcon}>
-              <ImPhone className={style.iconPhone} size={16} />
+          <a href={`tel: +${contact.number}`} onClick={handleClearSearch}>
+            <span>
+              <ImPhone size={16} />
             </span>
-            <span className={style.text}>{contact.number}</span>
+            <span>{contact.number}</span>
           </a>
         </div>
-        <div className={style.boxBtn}>
-          <button className={style.btn} onClick={onEdit}>
-            <RiEdit2Fill className={style.iconDelete} size={18} />
+        <div>
+          <button onClick={onEdit}>
+            <RiEdit2Fill size={18} />
           </button>
-          <button className={style.btn} onClick={openModal}>
-            <RiDeleteBin6Fill className={style.iconDelete} size={18} />
+          <button onClick={openModal}>
+            <RiDeleteBin6Fill size={18} />
           </button>
         </div>
       </div>

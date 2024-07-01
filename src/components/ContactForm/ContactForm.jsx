@@ -1,4 +1,3 @@
-import style from './ContactForm.module.css';
 import * as Yup from 'yup';
 import MaskedInput from 'react-text-mask';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
@@ -44,7 +43,6 @@ const TextMaskCustom = ({ field, ...props }) => (
     ]}
     placeholder="(123) 456-7890"
     showMask
-    className={style.field}
   />
 );
 const ContactForm = ({ setIsFormVisible, textValue }) => {
@@ -126,49 +124,29 @@ const ContactForm = ({ setIsFormVisible, textValue }) => {
         validationSchema={ContactSchema}
       >
         {resetForm => (
-          <Form className={style.form}>
-            <label className={style.label} htmlFor={nameFieldId}>
-              Name
-            </label>
+          <Form>
+            <label htmlFor={nameFieldId}>Name</label>
             <Field
-              className={style.field}
               type="text"
               name="name"
               id={nameFieldId}
               autoComplete="name"
             />
-            <ErrorMessage
-              className={style.error}
-              name="name"
-              component="span"
-            />
-            <label className={style.label} htmlFor={numberFieldId}>
-              Number
-            </label>
+            <ErrorMessage name="name" component="span" />
+            <label htmlFor={numberFieldId}>Number</label>
 
             <Field
-              className={style.field}
               type="tel"
               name="number"
               id={numberFieldId}
               component={TextMaskCustom}
               onClick={handleClick}
             />
-            <ErrorMessage
-              className={style.error}
-              name="number"
-              component="span"
-            />
-            <button className={style.btn} type="submit">
-              Add contact
-            </button>
+            <ErrorMessage name="number" component="span" />
+            <button type="submit">Add contact</button>
 
-            <button
-              className={style.btnUp}
-              type="button"
-              onClick={() => handleCloseForm(resetForm)}
-            >
-              <BsBoxArrowUpLeft className={style.iconUp} size={20} />
+            <button type="button" onClick={() => handleCloseForm(resetForm)}>
+              <BsBoxArrowUpLeft size={20} />
             </button>
           </Form>
         )}

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Fill, RiEdit2Fill } from 'react-icons/ri';
 import { deleteContact } from '../../redux/contacts/operations';
 import { useState } from 'react';
-import EditContactForm from '../EditContact/EditContact';
+import EditContact from '../EditContact/EditContact';
 import { FaRegUser } from 'react-icons/fa6';
 import { changeFilter, selectFilter } from '../../redux/filters/slice';
 import { ModalDelete } from '../ModalDelete/ModalDelete.jsx';
@@ -67,11 +67,7 @@ const Contact = ({ contact }) => {
         </div>
       </div>
       {isEdit && (
-        <EditContactForm
-          contact={contact}
-          setIsEdit={setIsEdit}
-          isEdit={isEdit}
-        />
+        <EditContact contact={contact} setIsEdit={setIsEdit} isEdit={isEdit} />
       )}
       <ModalDelete
         isOpen={isModalOpen}

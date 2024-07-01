@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/slice';
 import { NavLink } from 'react-router-dom';
-import { BiHomeAlt2 } from 'react-icons/bi';
+import { BiHomeSmile } from 'react-icons/bi';
 import { MdOutlineContacts } from 'react-icons/md';
 
 export const Navigation = () => {
@@ -11,7 +11,7 @@ export const Navigation = () => {
   return (
     <nav>
       <NavLink to="/">
-        <BiHomeAlt2 size={26} />
+        <BiHomeSmile size={26} />
       </NavLink>
       {isLoggedIn && (
         <NavLink to="/contacts">

@@ -21,7 +21,9 @@ const HomePage = () => {
           {isLoggedIn ? (
             <Link to="/contacts">Contacts</Link>
           ) : (
-            <Link to="/register">Register</Link>
+            <Link className={style.register} to="/register">
+              Register
+            </Link>
           )}
         </div>
       </div>

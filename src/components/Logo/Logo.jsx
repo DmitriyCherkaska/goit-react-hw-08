@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <header className={style.header}>
       <div className={style.divWrapper}>
-        <h1 className={style.title} data-text="Phonebook">
+        <h1 className={style.title} data-text="Contacts book">
           <MdBadge className={style.icon} size={50} />
           <br />
           Contacts book

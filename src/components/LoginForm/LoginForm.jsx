@@ -1,4 +1,4 @@
-// import style from './LoginForm.module.css';
+import style from './LoginForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useId } from 'react';
 import * as Yup from 'yup';
@@ -36,9 +36,10 @@ export const LoginForm = () => {
         onSubmit={handleSubmit}
         validationSchema={UserSchema}
       >
-        <Form>
+        <Form className={style.form}>
           <label htmlFor={emailFieldId}>Email</label>
           <Field
+            className={style.item}
             type="email"
             name="email"
             id={emailFieldId}
@@ -48,12 +49,21 @@ export const LoginForm = () => {
           <ErrorMessage name="email" component="span" />
           <label htmlFor={passwordFieldId}>Password</label>
 
-          <Field type="password" name="password" id={passwordFieldId} />
+          <Field
+            className={style.item}
+            type="password"
+            name="password"
+            id={passwordFieldId}
+          />
           <ErrorMessage name="password" component="span" />
-          <button type="submit">Log In</button>
+          <button className={style.btn} type="submit">
+            Log In
+          </button>
           <p>
             Do not have a account?
-            <Link to="/register">Register</Link>
+            <Link to="/register" className={style.text}>
+              Register
+            </Link>
           </p>
         </Form>
       </Formik>

@@ -1,5 +1,5 @@
+// import style from './LoginForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import style from './LoginForm.module.css';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -36,42 +36,24 @@ export const LoginForm = () => {
         onSubmit={handleSubmit}
         validationSchema={UserSchema}
       >
-        <Form className={style.form}>
-          <label className={style.label} htmlFor={emailFieldId}>
-            Email
-          </label>
+        <Form>
+          <label htmlFor={emailFieldId}>Email</label>
           <Field
-            className={style.field}
             type="email"
             name="email"
             id={emailFieldId}
             autoComplete="email"
             placeholder="user@gmail.com"
           />
-          <ErrorMessage className={style.error} name="email" component="span" />
-          <label className={style.label} htmlFor={passwordFieldId}>
-            Password
-          </label>
+          <ErrorMessage name="email" component="span" />
+          <label htmlFor={passwordFieldId}>Password</label>
 
-          <Field
-            className={style.field}
-            type="password"
-            name="password"
-            id={passwordFieldId}
-          />
-          <ErrorMessage
-            className={style.error}
-            name="password"
-            component="span"
-          />
-          <button className={style.btn} type="submit">
-            Log In
-          </button>
-          <p className={style.link}>
+          <Field type="password" name="password" id={passwordFieldId} />
+          <ErrorMessage name="password" component="span" />
+          <button type="submit">Log In</button>
+          <p>
             Do not have a account?
-            <Link className={style.signUp} to="/register">
-              Register
-            </Link>
+            <Link to="/register">Register</Link>
           </p>
         </Form>
       </Formik>

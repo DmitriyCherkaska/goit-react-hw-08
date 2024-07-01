@@ -8,7 +8,7 @@ import { selectIsRefreshing } from '../redux/auth/slice';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { Toaster } from 'react-hot-toast';
-import { Layout } from './Layout';
+import { Layout } from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));

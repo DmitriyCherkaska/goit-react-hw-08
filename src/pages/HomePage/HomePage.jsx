@@ -15,7 +15,7 @@ const HomePage = () => {
           <br />
           Convenient storage for your contacts. <br />
           <br />
-          Let is start!
+          Get started!
         </h1>
         <div>
           {isLoggedIn ? (

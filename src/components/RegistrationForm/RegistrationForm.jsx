@@ -56,6 +56,7 @@ export const RegistrationForm = () => {
               name="name"
               id={nameFieldId}
               autoComplete="name"
+              placeholder="name"
             />
             <ErrorMessage
               className={style.error}
@@ -82,6 +83,7 @@ export const RegistrationForm = () => {
               Password
             </label>
             <Field
+              placeholder="password"
               className={style.field}
               type="password"
               name="password"

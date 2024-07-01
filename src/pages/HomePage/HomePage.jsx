@@ -1,4 +1,4 @@
-// import style from './HomePage.module.css';
+import style from './HomePage.module.css';
 import Logo from '../../components/Logo/Logo';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -10,12 +10,12 @@ const HomePage = () => {
     <>
       <div>
         <Logo />
-        <h1>
-          Welcome to Your Personal PhoneBook! <br />
+        <h1 className={style.title}>
+          Your personal contact book! <br />
           <br />
-          Easily store and manage your contacts. <br />
+          Convenient storage for your contacts. <br />
           <br />
-          Start adding now!
+          Let is start!
         </h1>
         <div>
           {isLoggedIn ? (

@@ -1,10 +1,10 @@
 .icon {
-  fill: rgb(201, 98, 98);
+  fill: rgb(168, 231, 165);
 }
 
 .title {
   margin-top: 10px;
-  color: rgb(201, 98, 98);
+  color: rgb(168, 232, 156);
 }
 
 .divWrapper {
@@ -12,6 +12,6 @@
   overflow: hidden;
 }
 .header {
-  box-shadow: 2px 4px 35px rgb(201, 98, 98);
+  box-shadow: 2px 4px 35px rgb(168, 222, 177);
   margin-bottom: 70px;
 }

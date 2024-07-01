@@ -1,14 +1,14 @@
 import style from './Logo.module.css';
-import { MdOutlineContacts } from 'react-icons/md';
+import { MdBadge } from 'react-icons/md';
 
 const Logo = () => {
   return (
     <header className={style.header}>
       <div className={style.divWrapper}>
         <h1 className={style.title} data-text="Phonebook">
-          <MdOutlineContacts className={style.icon} size={50} />
+          <MdBadge className={style.icon} size={50} />
           <br />
-          Phonebook
+          Contacts book
         </h1>
       </div>
     </header>
